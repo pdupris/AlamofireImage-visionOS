@@ -24,7 +24,7 @@
 
 import Foundation
 
-#if os(iOS) || os(tvOS) || os(watchOS)
+#if os(iOS) || os(tvOS) || os(watchOS) || os(xrOS)
 import UIKit
 #elseif os(macOS)
 import Cocoa
