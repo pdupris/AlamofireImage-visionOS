@@ -109,7 +109,7 @@ final class DataRequestTestCase: BaseTestCase {
             }
 
             let expectedSize = imageType.expectedSize
-            #if os(iOS) || os(tvOS)
+            #if os(iOS) || os(tvOS) || os(visionOS)
             XCTAssertEqual(image.size, expectedSize.scaledToScreen, "image size does not match expected value")
             XCTAssertTrue(image.isScaledToScreen, "image scale does not match expected value")
             #elseif os(macOS)
@@ -190,7 +190,7 @@ final class DataRequestTestCase: BaseTestCase {
         }
 
         let expectedSize = Endpoint.Image.avif.expectedSize
-        #if os(iOS) || os(tvOS)
+        #if os(iOS) || os(tvOS) || os(visionOS)
         XCTAssertEqual(image.size, expectedSize.scaledToScreen, "image size does not match expected value")
         XCTAssertTrue(image.isScaledToScreen, "image scale does not match expected value")
         #elseif os(macOS)
@@ -228,7 +228,7 @@ final class DataRequestTestCase: BaseTestCase {
         }
 
         let expectedSize = Endpoint.Image.jxl.expectedSize
-        #if os(iOS) || os(tvOS)
+        #if os(iOS) || os(tvOS) || os(visionOS)
         XCTAssertEqual(image.size, expectedSize.scaledToScreen, "image size does not match expected value")
         XCTAssertTrue(image.isScaledToScreen, "image scale does not match expected value")
         #elseif os(macOS)

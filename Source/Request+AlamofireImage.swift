@@ -25,7 +25,7 @@
 import Alamofire
 import Foundation
 
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || os(visionOS)
 import UIKit
 #elseif os(watchOS)
 import UIKit
@@ -125,7 +125,7 @@ public final class ImageResponseSerializer: ResponseSerializer {
             throw AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength)
         }
 
-        #if os(iOS) || os(tvOS) || os(watchOS)
+        #if os(iOS) || os(tvOS) || os(watchOS) || os(visionOS)
         guard let image = UIImage.af.threadSafeImage(with: data, scale: imageScale) else {
             throw AFIError.imageSerializationFailed
         }
@@ -178,7 +178,7 @@ extension DataRequest {
         return UIScreen.main.scale
         #elseif os(watchOS)
         return WKInterfaceDevice.current().screenScale
-        #elseif os(macOS)
+        #elseif os(macOS) || os(visionOS)
         return 1.0
         #endif
     }
@@ -186,7 +186,7 @@ extension DataRequest {
 
 // MARK: - iOS, tvOS, and watchOS
 
-#if os(iOS) || os(tvOS) || os(watchOS)
+#if os(iOS) || os(tvOS) || os(watchOS) || os(visionOS)
 
 extension DataRequest {
     /// Adds a response handler to be called once the request has finished.
